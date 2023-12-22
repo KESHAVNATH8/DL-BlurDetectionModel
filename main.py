@@ -1,7 +1,12 @@
 from BlurImageclassification import logger
+from BlurImageclassification.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 
-logger.info("welcome to my custom log")
-
-# D:\BLUR.CLEAR\DL-BlurDetectionModel\src\BlurImageclassification\__init__.py
-# D:\BLUR.CLEAR\DL-BlurDetectionModel\src
-# D:\BLUR.CLEAR\DL-BlurDetectionModel\src\BlurImageclassification
+STAGE_NAME = "Data Ingestion stage"
+try:
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   data_ingestion = DataIngestionTrainingPipeline()
+   data_ingestion.main()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
